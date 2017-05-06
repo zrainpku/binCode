@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"  />
+    <script src="js/qrcode.js" charset="utf-8"></script>
+    <style>
+        #qrcode{
+            text-align: center;
+            display: table-cell;
+            width: 96px;
+            height: 96px;
+            vertical-align:middle;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="qrcode" style="height:400px;">二维码工具
+</div>
+<input type="text" id="getname" placeholder="邀请人名字" /> 
+<input type="text" id="getid" placeholder="邀请人id" /> 
+
+<!-- <input type="text" id="getval" placeholder="http://" value="http://"/>  -->
+
+<button id="send"  >点击生成二维码</button>
+<button id="scan"  >扫描二维码</button> 
+<script>
+    window.onload =function(){
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width : 256,//设置宽高
+            height : 256
+        });
+        //qrcode.makeCode("http://162.105.67.187:8080/QR/index.jsp?rec=%E9%99%88%E8%90%8D");
+        //qrcode.makeCode("");
+        var ip="http://162.105.67.14:8080/QR/index.jsp" ;
+
+        document.getElementById("send").onclick =function(){
+            qrcode.makeCode(ip +"?rec="+ encodeURI(encodeURI(document.getElementById("getname").value)) +"&recid="+ document.getElementById("getid").value);
+        }
+    }
+    
+    document.getElementById("scan").onclick =function (){
+		var rec = document.getElementById("getname").value;
+		var recid = document.getElementById("getid").value;
+		rec= encodeURI(rec);
+		window.location.href="index.jsp?rec="+rec+"&recid="+recid;
+	} 
+
+</script>
+</body>
+</html>
