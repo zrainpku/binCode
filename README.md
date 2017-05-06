@@ -1,5 +1,5 @@
 # binCode
-this function is a part of user to the wireless pku login system.
+it's a system for alien visiter to access the wireless pku login system.
  
 
 1.first login to the web  index.html 
